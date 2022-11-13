@@ -11,6 +11,8 @@ import React, { useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom';
 // import './style.css'
 import { LoginRequest } from '../../common/define-identity';
+import "antd/dist/antd.css";
+import "../../App.scss";
 export default function Login(): JSX.Element {
     const [rememberState,setRememberState] = useState<boolean>(false);
     const history = useHistory();
@@ -34,6 +36,7 @@ export default function Login(): JSX.Element {
         account.remember=rememberState;
         // console.log
         // dispatch(loginRequest(account));
+        history.push('/home')
         
     } 
 
