@@ -13,6 +13,7 @@ import { useHistory } from 'react-router-dom';
 import { LoginRequest } from '../../common/define-identity';
 import "antd/dist/antd.css";
 import "../../App.scss";
+import IdentityApi from '../../api/identity/identity.api';
 export default function Login(): JSX.Element {
     const [rememberState,setRememberState] = useState<boolean>(false);
     const history = useHistory();
@@ -34,8 +35,10 @@ export default function Login(): JSX.Element {
     
     const onFinish = async (account: LoginRequest): Promise<any> =>  {
         account.remember=rememberState;
-        // console.log
-        // dispatch(loginRequest(account));
+        IdentityApi.login(account).then((res: any) => {
+            console.log(res)
+        }).catch((err: any)=>{console.log(err)});
+        
         history.push('/home')
         
     } 
@@ -64,15 +67,12 @@ export default function Login(): JSX.Element {
                     size='large'
                 >
                 <Form.Item
-                    label="Email"
-                    name="email"
+                    label="Account"
+                    name="account"
                     rules={[
                     {
                         required: true,
-                        message: 'Vui lòng nhập email!',
-                    },{
-                        type: 'email',
-                        message: 'Nhập đúng định dạng email!'
+                        message: 'Vui lòng nhập tài khoản!',
                     }
                     ]}
                 >
@@ -89,7 +89,7 @@ export default function Login(): JSX.Element {
                     },
                     ]}
                 >
-                    <Input.Password type='passwordD' style={{borderRadius: "9px",width: "458px", height: "56.99px"}}/>
+                    <Input.Password type='password' style={{borderRadius: "9px",width: "458px", height: "56.99px"}}/>
                 </Form.Item>
 
                 <Form.Item

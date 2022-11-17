@@ -160,7 +160,7 @@ export interface NewResponseLogin {
 }
 
 export interface LoginRequest{
-    email: string,
+    account: string,
     password: string,
     remember: boolean,
 }
@@ -171,7 +171,7 @@ export interface IUser{
 }
 
 export interface RegisterRequest{
-    email: string,
+    account: string,
     password: string,
     confirmPassword: string
 }

@@ -95,5 +95,38 @@
     background-color: #007BEE;
     color:white;
     width: 200px;
+    align-items: center;
+    text-align: center;
+}
 
+.chartjs-render-monitor{
+    width: 529px !important;
+    height: 273px !important;
+}
+
+.ant-select:not(.ant-select-customize-input) .ant-select-selector {
+    border-radius: 20px;
+}
+
+.ant-picker.ant-picker-borderless{
+    border-radius: 20px;
+}
+
+.ant-picker-panel-container{
+    border-radius: 20px;
+}
+
+.date-picker{
+    display:flex;
+    // margin-top: -37px;
+    justify-content: flex-end;
+}
+
+.unselected-data-notification{
+    margin-left: 23px;
+    margin-top: 38px;
+}
+
+.main-selector{
+    left: 35%
 }

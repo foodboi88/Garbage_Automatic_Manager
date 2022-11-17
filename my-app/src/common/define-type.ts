@@ -237,3 +237,24 @@ export interface GetAllMembersWithRoleReq extends Paging{
 export interface GetAllTaskReq extends Paging{
     name?: string
 }
+
+export interface CompartmentData{
+    ID_khoangrac: string;
+    NhanRac: string;
+    KhoiLuong: number;
+}
+
+export interface BinData{
+    ID_thungrac: string;
+    ViTriThungRac: string;
+    Khoangrac: CompartmentData[]
+}
+
+export interface GarbageQuantity{
+    KhoiLuong: number,
+    NhanRac: string
+}
+export interface BarChartData{
+    Ngay: string;
+    Rac: GarbageQuantity[]
+}
