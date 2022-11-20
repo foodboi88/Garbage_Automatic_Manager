@@ -2,9 +2,13 @@ import React, { useEffect, useRef, useState } from 'react'
 import Chart from "chart.js";
 import StatisticApi from '../api/statistic/statistic.api';
 import { notification } from 'antd';
+import { BinData } from '../common/define-type';
 
 interface MyProps{
     chartType: string
+    binData: BinData
+    setBinData: React.Dispatch<React.SetStateAction<BinData | undefined>>
+
 }
 
 const CCurrentPieChart = (props: MyProps) => {
@@ -12,23 +16,23 @@ const CCurrentPieChart = (props: MyProps) => {
     const [pieChartData,setPieChartData] = useState()
 
 
-    useEffect(()=>{
-        const callAPI = async () => {
-            await StatisticApi.getCurrentChartData().then((res: any)=>{
-                setPieChartData(res.data)
-            }).catch((err:any)=>{
-                notification.open({
-                    message: 'Lay du lieu that bai',
-                    description:
-                      'Vui long kiem tra lai ket noi mang',
-                    onClick: () => {
-                      console.log('Notification Clicked!');
-                    },
-                  });
-            })
-        }
-        callAPI()
-    },[])
+    // useEffect(()=>{
+    //     const callAPI = async () => {
+    //         await StatisticApi.getCurrentChartData().then((res: any)=>{
+    //             setPieChartData(res.data)
+    //         }).catch((err:any)=>{
+    //             notification.open({
+    //                 message: 'Lay du lieu that bai',
+    //                 description:
+    //                   'Vui long kiem tra lai ket noi mang',
+    //                 onClick: () => {
+    //                   console.log('Notification Clicked!');
+    //                 },
+    //               });
+    //         })
+    //     }
+    //     callAPI()
+    // },[])
     // use a ref to store the chart instance since it it mutable
     const chartRef = useRef<Chart | null>(null);
 
@@ -39,19 +43,19 @@ const CCurrentPieChart = (props: MyProps) => {
             {
                 type: 'doughnut',
                 data: {
-                    labels: ["Africa", "Asia", "Europe", "Latin America", "North America"], //Thay bang cac nhan rac 
+                    labels: ["box_cardboard_paper", "glass_metal_plastic", "organic", "other"], //Thay bang cac nhan rac 
                     datasets: [
                         {
-                        label: "Population (millions)",
-                            backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"], 
-                            data: [2478,5267,734,784,433] //So luong rac hien tai. Truyen array tu data goi ve vao day
+                            label: "Population (millions)",
+                            backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9"], 
+                            data: props.binData.Khoangrac.map(item=>item.KhoiLuong) //So luong rac hien tai. Truyen array tu data goi ve vao day
                         }
                     ]
                 },
                 options: {
                     title: {
                         display: true,
-                        text: 'Predicted world population (millions) in 2050'
+                        text: 'Tỷ lệ mỗi loại rác trong thùng'
                     }
                 }
             }
@@ -72,6 +76,10 @@ const CCurrentPieChart = (props: MyProps) => {
         chartRef.current?.destroy();
       };*/
     }, [chartType]);
+
+    // useEffect(()=>{
+    //     props.setBinData(undefined) // Dung de xoa du lieu bieu do cua vi tri da chon truoc do
+    // },[props.binData])
   
     return (
       <div className="self-center ">

@@ -2,9 +2,13 @@ import React, { useEffect, useRef, useState } from 'react'
 import Chart from "chart.js";
 import StatisticApi from '../api/statistic/statistic.api';
 import { notification } from 'antd';
+import { BinData } from '../common/define-type';
 
 interface MyProps{
     chartType: string
+    binData: BinData
+    setBinData: React.Dispatch<React.SetStateAction<BinData | undefined>>
+
 }
 
 const CCurrentBarChart = (props: MyProps) => {
@@ -13,23 +17,23 @@ const CCurrentBarChart = (props: MyProps) => {
     const [pieChartData,setPieChartData] = useState()
 
 
-    useEffect(()=>{
-        const callAPI = async () => {
-            await StatisticApi.getCurrentChartData().then((res: any)=>{
-                setPieChartData(res.data)
-            }).catch((err:any)=>{
-                notification.open({
-                    message: 'Lay du lieu that bai',
-                    description:
-                      'Vui long kiem tra lai ket noi mang',
-                    onClick: () => {
-                      console.log('Notification Clicked!');
-                    },
-                  });
-            })
-        }
-        callAPI()
-    },[])
+    // useEffect(()=>{
+    //     const callAPI = async () => {
+    //         await StatisticApi.getCurrentChartData().then((res: any)=>{
+    //             setPieChartData(res.data)
+    //         }).catch((err:any)=>{
+    //             notification.open({
+    //                 message: 'Lay du lieu that bai',
+    //                 description:
+    //                   'Vui long kiem tra lai ket noi mang',
+    //                 onClick: () => {
+    //                   console.log('Notification Clicked!');
+    //                 },
+    //               });
+    //         })
+    //     }
+    //     callAPI()
+    // },[])
     // use a ref to store the chart instance since it it mutable
     const chartRef = useRef<Chart | null>(null);
 
@@ -44,7 +48,7 @@ const CCurrentBarChart = (props: MyProps) => {
                 labels: ['Box_CardBoard_Paper', 'Glass_Metal_Plastic', 'Organic', 'Other'],
                 datasets: [{
                     label: 'My First Dataset',
-                    data: [65, 59, 80, 81], // Truyen array tu data vao day
+                    data: props.binData.Khoangrac.map(item=>item.KhoiLuong), // Truyen array tu data vao day
                     backgroundColor: [
                         'rgba(255, 99, 132, 0.2)',
                         'rgba(255, 159, 64, 0.2)',
@@ -83,12 +87,16 @@ const CCurrentBarChart = (props: MyProps) => {
         chartRef.current?.destroy();
         };*/
     }, [chartType]);
+
+    // useEffect(()=>{
+    //     props.setBinData(undefined) // Dung de xoa du lieu bieu do cua vi tri da chon truoc do
+    // },[props.binData])
     
     return (
         <div className="self-center ">
-        <div className="overflow-hidden">
-            <canvas ref={canvasCallback}></canvas>
-        </div>
+            <div className="overflow-hidden">
+                <canvas ref={canvasCallback}></canvas>
+            </div>
         </div>
     );
 }

@@ -77,7 +77,7 @@ export default class StatisticApi {
     static resetBinById(binId: string, compartmentId: string): any{
         var config = {
             method: 'get',
-            url: `http://127.0.0.1:5000/reset/${binId}&${compartmentId}`,
+            url: `http://127.0.0.1:5000/reset/${binId}/${compartmentId}`,
             headers: { }
           };
 

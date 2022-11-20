@@ -37,7 +37,8 @@ const Home = () => {
         StatisticApi.getAllBinData().then((res: any)=>{
             console.log(res);
             console.log(res.data.listkhuvuc);
-         
+            console.log('-----------suc2---------')
+
             setAllBinData(res.data.listkhuvuc);
             setBinData(allBinData[0]);
             setLoading(false);
@@ -53,12 +54,13 @@ const Home = () => {
 
     const resetHandle = async (binId: string, compartmentId: string) => {
         await StatisticApi.resetBinById(binId, compartmentId).then((res: any)=>{ // Reset luong rac trong thung co ID nhat dinh
+            console.log('-----------suc1---------')
             notification.open({
                     message: 'Reset luong rac trong khoang thanh cong',
-                    description:
-                    'Vui long kiem tra lai ket noi mang',
+                    // description:
+                    // 'Vui long kiem tra lai ket noi mang',
                     onClick: () => {
-                    console.log('Notification Clicked!');
+                        console.log('Notification Clicked!');
                     },
                 });
             }
@@ -77,6 +79,7 @@ const Home = () => {
 
     const handleChange = (choseBinID: string) => { // Tim ra thung rac co ID giong voi thung rac duoc chon trong o Select
         console.log(`selected ${choseBinID}`);
+        // setBinData(undefined)
         if(allBinData){
             const choseBin = allBinData.find((item) => item.ID_thungrac===choseBinID)
             setBinData(choseBin)
@@ -178,7 +181,7 @@ const Home = () => {
                             <div style={{marginBottom: '6px'}} onClick={(e) => e.preventDefault()}><MenuOutlined /></div>
                         </Dropdown>
                         <Select
-                            placeholder="Lua chon khu vuc"
+                            placeholder="Lua chon thung rac"
                             style={{ width: 200 }}
                             onChange={handleChange}
                             className='main-selector'
@@ -191,34 +194,39 @@ const Home = () => {
                             }
                         </Select>
                     </div>
-                    <div className='statistic'>
-                        <div>
-                            
-                            <CChart // Bieu do the hien 
-                                // BinsData={BinsData}
-                                binId = {binId}
-                            />
-                        </div>
-                        <div className='progression-bar-group'>
-                            <div>Lượng rác hiện tại có trong thùng:</div>
-                            {
-                                binData ?
-                                binData.Khoangrac.map((item: CompartmentData,index)=>{
-                                    return(
-                                        <CProgressionBar
-                                            ordinal={index}
-                                            BinData={binData}
-                                            CompartmentData={item}
-                                            resetHandle={resetHandle}
-                                        />
-                                    )
-                                }) : 
-                                <div className='unselected-data-notification'>Vui long chon khu vuc de xem luong rac hien tai: </div>
-                            }
-                            
-                            
-                        </div>
-                    </div>
+                    {
+                        binId ?
+                        <div className='statistic'>
+                            <div>
+                                
+                                <CChart // Bieu do the hien 
+                                    setBinData={setBinData}
+                                    binData={binData}
+                                    binId = {binId}
+                                />
+                            </div>
+                            <div className='progression-bar-group'>
+                                <div>Lượng rác hiện tại có trong thùng:</div>
+                                {
+                                    binData ?
+                                    binData.Khoangrac.map((item: CompartmentData,index)=>{
+                                        return(
+                                            <CProgressionBar
+                                                ordinal={index}
+                                                BinData={binData}
+                                                CompartmentData={item}
+                                                resetHandle={resetHandle}
+                                            />
+                                        )
+                                    }) : 
+                                    <div className='unselected-data-notification'>Vui long chon khu vuc de xem luong rac hien tai: </div>
+                                }
+                                
+                                
+                            </div>
+                        </div> : 
+                        <div style={{marginLeft:'40%'}}>Vui long chon thung rac de xem luong rac tuong ung</div>
+                    }
                         
                 </div>
             }

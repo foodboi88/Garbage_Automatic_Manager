@@ -9,10 +9,13 @@ import StatisticApi from "../api/statistic/statistic.api";
 import CCurrentPieChart from "./CCurrentPieChart";
 import CCurrentBarChart from "./CCurrentBarChart";
 import CPeriodTimeBarChart from "./CPeriodTimeBarChart";
+import { BinData } from "../common/define-type";
 
 
 interface MyProps{
     binId?: string
+    binData?: BinData
+    setBinData: React.Dispatch<React.SetStateAction<BinData | undefined>>
 }
 
 
@@ -61,15 +64,20 @@ export default (props: MyProps) => {
                 </div>
                 {/* <MyChart chartType={chartType} /> */}
                 {
-                    showCurrentPieChart && 
+                    showCurrentPieChart && props.binData && 
                     <CCurrentPieChart
                         chartType="current_pie"
+                        binData={props.binData}
+                        setBinData={props.setBinData}
                     />
                 }
                 {
-                    showCurrentBarChart && 
+                    showCurrentBarChart && props.binData &&
                     <CCurrentBarChart
                         chartType="current_bar"
+                        binData={props.binData}
+                        setBinData={props.setBinData}
+
                     />
                 }
                 {
