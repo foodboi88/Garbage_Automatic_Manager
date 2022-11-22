@@ -40,7 +40,7 @@ const CPeriodTimeBarChart = (props: MyProps) => {
                     stack: 'Stack 1',
                     data: barChartData?.map(item=>item.Rac[0].KhoiLuong),
                     // data: [130,34,25,78],
-                    backgroundColor: 'blue',                          
+                    backgroundColor: 'rgba(140, 225, 250, 0.4)',                          
                 },
                 {
                     label: 'glass_metal_plastic',
@@ -48,7 +48,7 @@ const CPeriodTimeBarChart = (props: MyProps) => {
                     data: barChartData?.map(item=>item.Rac[1].KhoiLuong),
                     // data: [13,134,251,54],
 
-                    backgroundColor: 'orange',                          
+                    backgroundColor: 'rgba(255, 159, 64, 0.4)',                          
                 },
                 {
                     label: 'organic',
@@ -56,7 +56,7 @@ const CPeriodTimeBarChart = (props: MyProps) => {
                     // data: [30,54,29,38],
 
                     stack: 'Stack 1',
-                    backgroundColor: 'yellow',                          
+                    backgroundColor: 'rgba(255, 205, 86, 0.4)',                          
                 },
                 {
                     label: 'other',
@@ -64,7 +64,7 @@ const CPeriodTimeBarChart = (props: MyProps) => {
                     // data: [35,51,25,140],
 
                     stack: 'Stack 1',
-                    backgroundColor: 'green',                          
+                    backgroundColor: 'rgba(75, 192, 192, 0.4)',                          
                 }]
                 // datasets: barChartData?.map(item=>({
                 //     label: item.Ngay,

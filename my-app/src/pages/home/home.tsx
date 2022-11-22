@@ -100,7 +100,7 @@ const Home = () => {
         <div className='body'>
             <div>
                 <div className='main-title color-title'>HỆ THỐNG IOT NHẬN DIỆN RÁC THẢI</div>
-                <div className='main-title color-title'>From team 15 with love</div>
+                <div className='main-title color-title'>{`From team 15 with love <3`} </div>
             </div>
             {
                 !loading && 

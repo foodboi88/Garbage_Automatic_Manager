@@ -50,14 +50,14 @@ const CCurrentBarChart = (props: MyProps) => {
                     label: 'My First Dataset',
                     data: props.binData.Khoangrac.map(item=>item.KhoiLuong), // Truyen array tu data vao day
                     backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(255, 159, 64, 0.2)',
-                        'rgba(255, 205, 86, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(140, 225, 250, 0.4)',
+                        'rgba(255, 159, 64, 0.4)',
+                        'rgba(255, 205, 86, 0.4)',
+                        'rgba(75, 192, 192, 0.4)',
                         
                     ],
                     borderColor: [
-                        'rgb(255, 99, 132)',
+                        'rgb(140, 225, 250)',
                         'rgb(255, 159, 64)',
                         'rgb(255, 205, 86)',
                         'rgb(75, 192, 192)',
