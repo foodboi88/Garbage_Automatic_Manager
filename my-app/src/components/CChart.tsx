@@ -48,19 +48,19 @@ export default (props: MyProps) => {
                         setShowCurrentPieChart(true);
                         setShowCurrentBarChart(false);
                         setShowPeriodTimeBarChart(false);
-                    }}>View 1</Button>    
+                    }}>Xem ty le cac loai rac hien tai</Button>    
                     <Button type="primary" className="button-styled" onClick={()=>{
                         setChartType('current_bar');
                         setShowCurrentPieChart(false);
                         setShowCurrentBarChart(true);
                         setShowPeriodTimeBarChart(false);
-                    }}>View 2</Button>
+                    }}>Xem luong rac cac loai hien tai</Button>
                     <Button type="primary" className="button-styled" onClick={()=>{
                         setChartType('period_time_bar');
                         setShowCurrentPieChart(false);
                         setShowCurrentBarChart(false);
                         setShowPeriodTimeBarChart(true);
-                    }}>View 3</Button>
+                    }}>Xem luong rac cac loai theo ngay</Button>
                 </div>
                 {/* <MyChart chartType={chartType} /> */}
                 {

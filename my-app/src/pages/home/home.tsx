@@ -13,6 +13,7 @@ import CGabargeImages from '../../components/CGabargeImages';
 import StatisticApi from '../../api/statistic/statistic.api';
 import { BinData, CompartmentData } from '../../common/define-type';
 import { Option } from 'antd/lib/mentions';
+import MainBackground from '../../images/mainBackground.webp'
 
 const Home = () => {
 
@@ -79,7 +80,7 @@ const Home = () => {
 
     const handleChange = (choseBinID: string) => { // Tim ra thung rac co ID giong voi thung rac duoc chon trong o Select
         console.log(`selected ${choseBinID}`);
-        // setBinData(undefined)
+        setBinData(undefined)
         if(allBinData){
             const choseBin = allBinData.find((item) => item.ID_thungrac===choseBinID)
             setBinData(choseBin)
@@ -96,7 +97,7 @@ const Home = () => {
 
 
     return (
-        <div>
+        <div style={{backgroundImage:MainBackground}}>
             <div>
                 <div className='main-title color-title'>HỆ THỐNG IOT NHẬN DIỆN RÁC THẢI</div>
                 <div className='main-title'>From team 15 with love</div>
@@ -225,13 +226,18 @@ const Home = () => {
                                 
                             </div>
                         </div> : 
-                        <div style={{marginLeft:'40%'}}>Vui long chon thung rac de xem luong rac tuong ung</div>
+                        <div style={{marginLeft:'38%'}}>Vui long chon thung rac de xem luong rac tuong ung</div>
                     }
                         
                 </div>
             }
             <div className='body-content'>
-                <CGabargeImages/>
+                {
+                    binData &&
+                    <CGabargeImages
+                        binData={binData}
+                    />
+                }
 
             </div>
         </div>

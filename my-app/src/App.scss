@@ -7,11 +7,19 @@
 
 }
 
+.body{
+    width: 100%;
+    height: 100%;
+}
+
 .body-content{
     margin: 10px;
     background: #D9D9D9;
     // opacity: 0.3;
     border-radius: 20px;
+    margin: auto;
+    width: 80%;
+    backdrop-filter: blur(10px);
 }
 
 .account{
@@ -128,5 +136,15 @@
 }
 
 .main-selector{
-    left: 35%
+    left: 31.8%;
+
+}
+
+.garbage-date-picker{
+    display: flex;
+    width: 100%;
+    text-align: center;
+    // align-items: center;
+    // align-content: space-around;
+    margin-left: 35.5%;
 }

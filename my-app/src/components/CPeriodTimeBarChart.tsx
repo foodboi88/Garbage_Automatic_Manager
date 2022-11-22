@@ -109,6 +109,7 @@ const CPeriodTimeBarChart = (props: MyProps) => {
 
     useEffect(()=>{
         if(props.binId && endTime>startTime) {
+            setBarChartData(undefined) // Xoa du lieu cu khi chon lai ngay
             const formatStartTime = startTime.toISOString().slice(0, 10);
             const formatEndTime = endTime.toISOString().slice(0, 10);
             console.log(props.binId,'_',formatStartTime,'_',formatEndTime)

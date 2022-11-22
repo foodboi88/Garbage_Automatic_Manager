@@ -242,12 +242,14 @@ export interface CompartmentData{
     ID_khoangrac: string;
     NhanRac: string;
     KhoiLuong: number;
+    AnhRac: string[]
+
 }
 
 export interface BinData{
     ID_thungrac: string;
     ViTriThungRac: string;
-    Khoangrac: CompartmentData[]
+    Khoangrac: CompartmentData[];
 }
 
 export interface GarbageQuantity{
@@ -257,4 +259,10 @@ export interface GarbageQuantity{
 export interface BarChartData{
     Ngay: string;
     Rac: GarbageQuantity[]
+}
+
+export interface GetImageResponse{
+    ID_khoangrac: string;
+    AnhRac: string[];
+    NhanRac: string;
 }
