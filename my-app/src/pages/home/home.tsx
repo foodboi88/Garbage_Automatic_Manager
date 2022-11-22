@@ -56,16 +56,26 @@ const Home = () => {
     const resetHandle = async (binId: string, compartmentId: string) => {
         await StatisticApi.resetBinById(binId, compartmentId).then((res: any)=>{ // Reset luong rac trong thung co ID nhat dinh
             console.log('-----------suc1---------')
+            // setBinData(undefined)
             notification.open({
-                    message: 'Reset luong rac trong khoang thanh cong',
-                    // description:
-                    // 'Vui long kiem tra lai ket noi mang',
-                    onClick: () => {
-                        console.log('Notification Clicked!');
-                    },
-                });
+                message: 'Reset luong rac trong khoang thanh cong',
+                // description:
+                // 'Vui long kiem tra lai ket noi mang',
+                onClick: () => {
+                    console.log('Notification Clicked!');
+                },
+            });
             }
-        )
+        ).catch((err: any)=> {
+            notification.open({
+                message: 'Trong thùng đã hết rác',
+                // description:
+                // 'Vui long kiem tra lai ket noi mang',
+                onClick: () => {
+                    console.log('Notification Clicked!');
+                },
+            });
+        })
 
         getAllBinData()
     }   

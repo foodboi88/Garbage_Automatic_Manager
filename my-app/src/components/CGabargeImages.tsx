@@ -9,6 +9,7 @@ import React, {useState, useEffect} from 'react'
 import { BinData, GetImageResponse } from '../common/define-type'
 import plastic_trash from '../images/plastic_trash.jpg'
 import StatisticApi from '../api/statistic/statistic.api';
+import InfiniteScroll from 'react-infinite-scroll-component';
 
 const data = [
     0,1,2,3,4,5,6,7,8
@@ -144,6 +145,10 @@ const CGabargeImages = (props: MyProps) => {
 
     }
 
+    const fetchData = () => {
+
+    }
+
     return (
         <div>
             
@@ -182,16 +187,30 @@ const CGabargeImages = (props: MyProps) => {
                     style={{ marginLeft: 15 }}
                 />
             </div>
-            <div className='list-garbage-image'>
-                {
-                    currentData &&
-                    currentData.map((item)=>{ // Co API se chinh lai data -> imageStore
-                        return(
-                            <Image style={{width:'100px', margin: '10px', borderRadius: ' 15px'}} src={item}/>
-                        )
-                    })
-                }
-            </div>
+            {
+                currentData &&
+                <div className='list-garbage-image'>
+                    <InfiniteScroll
+                        next={fetchData}
+                        hasMore={true}
+                        loader={<h4></h4>}
+                        dataLength={currentData.length}
+                        scrollableTarget="scrollableDiv"
+
+                    >
+                        {
+                            
+                            currentData.map((item)=>{ // Co API se chinh lai data -> imageStore
+                                return(
+                                    <Image style={{width:'100px', margin: '10px', borderRadius: ' 15px'}} src={item}/>
+                                )
+                            })
+                        }
+                    </InfiniteScroll>
+                    
+                </div>
+            }
+            
 
         </div>
     )

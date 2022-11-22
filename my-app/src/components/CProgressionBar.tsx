@@ -33,7 +33,13 @@ const CProgressionBar = (props: MyProps) => {
                         {/* <ProgressBar animated label={`${now}%`} now={now} max={100}/> */}
 
                     </div>
-                    <Button onClick={()=>props.resetHandle(props.BinData.ID_thungrac, props.BinData.Khoangrac[props.ordinal].ID_khoangrac)} className='button-styled' type='primary' style={{marginTop: '24px'}}>Reset</Button>
+                    <Button onClick={()=>
+                        {
+                            props.CompartmentData.KhoiLuong=0
+
+                            props.resetHandle(props.BinData.ID_thungrac, props.BinData.Khoangrac[props.ordinal].ID_khoangrac)
+                        }
+                    } className='button-styled' type='primary' style={{marginTop: '24px'}}>Reset</Button>
                 </>
             }
         </div>
