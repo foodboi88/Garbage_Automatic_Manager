@@ -10,12 +10,18 @@
 .body{
     width: 100%;
     height: 100%;
+    background-image: url(https://99designs-blog.imgix.net/blog/wp-content/uploads/2018/12/Gradient_builder_2.jpg?auto=format&q=60&w=1815&h=1200&fit=crop&crop=faces);
+    height: 1100px;
+    background-position: center;
+    background-repeat: no-repeat;
+    // background-size: cover;
 }
 
 .body-content{
     margin: 10px;
-    background: #D9D9D9;
+    background: rgba(217, 217, 217,0.6);
     // opacity: 0.3;
+    
     border-radius: 20px;
     margin: auto;
     width: 80%;
@@ -56,6 +62,13 @@
 
 }
 
+.icon-styled{
+    border-radius: 15px;
+    margin: 2px;
+    font-size: 30px;
+    margin-top: 10px;
+}
+
 .chart{
     display: flex;
 }
@@ -66,7 +79,7 @@
 }
 
 .color-title {
-    background: linear-gradient(97.96deg, #11B8F7 5.25%, #007BEE 90.88%);
+    background: #fcd7ee;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -147,4 +160,9 @@
     // align-items: center;
     // align-content: space-around;
     margin-left: 35.5%;
+}
+
+.ant-popover-inner{
+    border-radius: 14px;
+
 }

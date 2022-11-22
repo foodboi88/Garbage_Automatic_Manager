@@ -1,4 +1,4 @@
-import { Button, Select } from "antd";
+import { Button, Popover, Select } from "antd";
 import Chart from "chart.js";
 import { useRef, useEffect, useState } from "react";
 import DatePicker from "./CDatePicker";
@@ -10,6 +10,7 @@ import CCurrentPieChart from "./CCurrentPieChart";
 import CCurrentBarChart from "./CCurrentBarChart";
 import CPeriodTimeBarChart from "./CPeriodTimeBarChart";
 import { BinData } from "../common/define-type";
+import { BarChartOutlined, FundOutlined, PieChartOutlined } from "@ant-design/icons";
 
 
 interface MyProps{
@@ -43,7 +44,61 @@ export default (props: MyProps) => {
             <div className="chart">
         
                 <div className="chart-button">
-                    <Button type="primary" className="button-styled" onClick={()=>{
+                    <Popover content={
+                            <div>
+                                Xem lượng tỷ lệ lượng rác các loại hiện tại
+                            </div>
+                        } 
+                        title="Loại biểu đồ"
+                        placement="right"
+                    >
+                        <PieChartOutlined 
+                            className="icon-styled" onClick={()=>{
+                                setChartType('current_pie')
+                                setShowCurrentPieChart(true);
+                                setShowCurrentBarChart(false);
+                                setShowPeriodTimeBarChart(false);
+                            }}
+                        />
+                    </Popover>
+                    
+                    <Popover content={
+                            <div>
+                                Xem lượng rác các loại hiện tại
+                            </div>
+                        } 
+                        title="Loại biểu đồ"
+                        placement="right"
+                    >
+                        <BarChartOutlined 
+                            className="icon-styled" onClick={()=>{
+                                setChartType('current_bar');
+                                setShowCurrentPieChart(false);
+                                setShowCurrentBarChart(true);
+                                setShowPeriodTimeBarChart(false);
+                            }}
+                        />
+                    </Popover>
+                    
+                    <Popover content={
+                            <div>
+                                Xem lượng rác các loại theo thời gian
+                            </div>
+                        } 
+                        title="Loại biểu đồ"
+                        placement="right"
+                    >
+                        <FundOutlined 
+                            className="icon-styled" onClick={()=>{
+                                setChartType('period_time_bar');
+                                setShowCurrentPieChart(false);
+                                setShowCurrentBarChart(false);
+                                setShowPeriodTimeBarChart(true);
+                            }}
+                        />
+                    </Popover>
+                    
+                    {/* <Button type="primary" className="button-styled" onClick={()=>{
                         setChartType('current_pie')
                         setShowCurrentPieChart(true);
                         setShowCurrentBarChart(false);
@@ -60,7 +115,7 @@ export default (props: MyProps) => {
                         setShowCurrentPieChart(false);
                         setShowCurrentBarChart(false);
                         setShowPeriodTimeBarChart(true);
-                    }}>Xem luong rac cac loai theo ngay</Button>
+                    }}>Xem luong rac cac loai theo ngay</Button> */}
                 </div>
                 {/* <MyChart chartType={chartType} /> */}
                 {

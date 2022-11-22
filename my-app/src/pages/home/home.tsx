@@ -97,10 +97,10 @@ const Home = () => {
 
 
     return (
-        <div style={{backgroundImage:MainBackground}}>
+        <div className='body'>
             <div>
                 <div className='main-title color-title'>HỆ THỐNG IOT NHẬN DIỆN RÁC THẢI</div>
-                <div className='main-title'>From team 15 with love</div>
+                <div className='main-title color-title'>From team 15 with love</div>
             </div>
             {
                 !loading && 
